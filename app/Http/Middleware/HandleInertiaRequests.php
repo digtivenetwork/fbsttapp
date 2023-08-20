@@ -38,7 +38,7 @@ class HandleInertiaRequests extends Middleware
                 return array_merge((new Ziggy)->toArray(), [
                     'location' => $request->url(),
                 ]);
-            },
+            }
         ]);
     }
 }
