@@ -6,6 +6,7 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
+import FBSLogo from '/resources/images/Logo_FBS-Wide.png';
 
 const showingNavigationDropdown = ref(false);
 </script>
@@ -21,17 +22,22 @@ const showingNavigationDropdown = ref(false);
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
-                                    <ApplicationLogo
+                                    <img class="h-8 w-auto" :src="FBSLogo" alt="FBS Triumph" />
+                                    <!-- <ApplicationLogo
                                         class="block h-9 w-auto fill-current text-gray-800"
-                                    />
+                                    /> -->
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                    Claimed Prize
                                 </NavLink>
+                                <NavLink :href="route('import.index')" :active="route().current('import.index')">
+                                    Import
+                                </NavLink>
+                                
                             </div>
                         </div>
 
