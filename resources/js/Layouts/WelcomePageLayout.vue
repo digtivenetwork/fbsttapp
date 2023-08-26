@@ -13,17 +13,17 @@ const navigation = [
 </script>
 
 <template>
-    <div class="bg-dots-darker bg-gray-100">
+    <div class=" h-screen">
       <header>
         <div class="fixed top-0 z-50 w-full">
           <Disclosure as="nav" class="bg-white " v-slot="{ open }">
-            <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-              <div class="relative flex h-16 items-center justify-between">
+            <div class="mx-auto max-w-8xl px-2 sm:px-6 lg:px-8">
+              <div class="relative flex h-20 items-center justify-between">
                 <div class="absolute inset-0 left-0 flex items-center sm:hidden">
                 </div>
                 <div class="flex justify-center sm:items-stretch sm:justify-start">
                   <div class="flex flex-shrink-0 items-center">
-                    <img class="h-8 w-auto" :src="FBSLogo" alt="FBS Triumph" />
+                    <img class="h-12 w-auto" :src="FBSLogo" alt="FBS Triumph" />
                   </div>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -58,7 +58,7 @@ const navigation = [
                     <Link
                     :href="route('login')"
                     class="rounded-md bg-green-100 px-2 py-1 justify-center font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                    >Log in</Link>
+                    >Login</Link>
                     
                     <Link
                     :href="route('register')"
@@ -76,18 +76,31 @@ const navigation = [
         
       </header>
       
-      <main>
-        <div class="relative top-20 flex flex-col h-screen w-full">
-          <div class="px-2">
+      <main class="bg-dots-darker bg-gray-100">
+        <div class="relative pt-28 h-max flex flex-col w-full mx-auto max-w-8xl">
+          <div class="px-6">
             <div class="bg-white h-fit shadow p-4 rounded-md">
               <slot name="promo-carousel"></slot>
             </div> 
-            <div class=" mt-5 h-fit ">
+            <div class="my-5 h-max">
               <slot name="customer-card"></slot>
             </div>
-            <div> 03 </div>
+            <div class="my-5 h-max">
+              <slot name="prize-card"></slot>
+            </div>
+            <div class="my-5 h-max">
+              <slot name="order-list-table"></slot>
+            </div>
           </div>
-          
+
+          <footer class="pb-5">
+            <div class="flex items-center justify-center">
+              <div>
+                Copyright © FBS 2023
+              </div>
+            </div>
+          </footer>
+
         </div>
       </main>
     </div>
