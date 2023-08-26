@@ -1,12 +1,9 @@
 <?php
 
-use App\Http\Controllers\ImportController;
-use App\Http\Controllers\PrizeClaimedController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use Maatwebsite\Excel\Row;
 
 use function PHPSTORM_META\map;
 
@@ -28,24 +25,15 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-    
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-
-    Route::get('/dashboard',[PrizeClaimedController::class, 'index'])->name('dashboard');
-
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::get('/import',[ImportController::class, 'index'])->name('import.index');
-    Route::get('/import/uploadform',[ImportController::class, 'uploadform'])->name('import.uploadform');
-    Route::post('/import/upload',[ImportController::class, 'upload'])->name('import.upload');
 });
 
 require __DIR__.'/auth.php';
