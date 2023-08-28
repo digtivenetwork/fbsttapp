@@ -35,9 +35,14 @@ const showingNavigationDropdown = ref(false);
                                     Claimed Prize
                                 </NavLink>
                                 <NavLink :href="route('import.index')" :active="route().current('import.index')">
-                                    Import
+                                    Import Data
                                 </NavLink>
-                                
+                                <NavLink :href="route('import.index')" :active="route().current('import.index')">
+                                    Customer List
+                                </NavLink>
+                                <NavLink :href="route('import.index')" :active="route().current('import.index')">
+                                    Prize List
+                                </NavLink>
                             </div>
                         </div>
 
