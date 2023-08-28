@@ -13,7 +13,7 @@ const navigation = [
 </script>
 
 <template>
-    <div class="h-screen">
+    <div class=" h-screen">
       <header>
         <div class="fixed top-0 z-50 w-full">
           <Disclosure as="nav" class="bg-white " v-slot="{ open }">
@@ -54,7 +54,7 @@ const navigation = [
                     </transition>
                   </Menu>
 
-                  <!-- <template v-else>
+                  <template v-else>
                     <Link
                     :href="route('login')"
                     class="rounded-md bg-green-100 px-2 py-1 justify-center font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
@@ -64,7 +64,7 @@ const navigation = [
                     :href="route('register')"
                     class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                     >Register</Link>
-                  </template> -->
+                  </template>
                   
 
                 </div>
@@ -77,33 +77,31 @@ const navigation = [
       </header>
       
       <main class="bg-dots-darker bg-gray-100">
-        <div class="relative top-20 flex flex-col h-screen w-full">
-          <div class="px-2">
-            <div class="bg-white h-fit shadow p-4 rounded-md">
-              <slot name="promo-carousel"></slot>
-            </div> 
+        <div class="relative pt-24 h-max flex flex-col w-full mx-auto max-w-8xl">
+          <div class="px-6">
             <div class="my-5 h-max">
               <slot name="customer-card"></slot>
             </div>
             <div class="my-5 h-max">
-              <slot name="prize-card"></slot>
+              <slot name="prize-w-form"></slot>
             </div>
             <div class="my-5 h-max">
-              <slot name="order-list-table"></slot>
+              <slot name="other-prize"></slot>
             </div>
           </div>
 
-          <footer class="pb-5">
-            <div class="flex items-center justify-center">
-              <div>
-                Copyright © FBS 2023
-              </div>
-            </div>
-          </footer>
-
         </div>
       </main>
+
+    <footer class="pb-5 bg-dots-darker bg-gray-100">
+        <div class="flex items-center justify-center">
+            <div>
+                Copyright © FBS 2023
+            </div>
+        </div>
+    </footer>
     </div>
+    
     
 
   

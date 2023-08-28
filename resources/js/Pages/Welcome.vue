@@ -5,22 +5,19 @@ import { initFlowbite } from 'flowbite';
 import { onMounted } from 'vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import Table from '@/Components/Table.vue';
+import Tablev2 from '@/Components/Tablev2.vue';
 import Pagination from '@/Components/Pagination.vue';
 
 onMounted(() => {
   initFlowbite();
 });
 
-// initialize components based on data attribute selectors
-
 defineProps({
-    canLogin: {
-        type: Boolean,
+    prizes:{
+        type: Object
     },
-    canRegister: {
-        type: Boolean,
-    }
 });
+
 </script>
 
 <template>
@@ -118,62 +115,26 @@ defineProps({
                     </div>
                 </div>
             </div>
+            
         </template>
-
         <template #prize-card>
-            <div class="w-full flex flex-col md:flex-row items-center justify-center gap-5">
-                <div class="bg-white w-full md:w-1/4 rounded-[16px] p-2 flex flex-col items-center justify-center text-center p-5">
-                    <img class="mb-3" src="https://tradingtriumph.fbs-campaigns-th.com/dashboard/images/Prize/prize-1.png" alt="">
+            <div 
+            class="w-full flex flex-col md:flex-row items-center justify-center gap-5">
+                <div v-for="prize in prizes"
+                class="bg-white w-full md:w-1/4 rounded-[16px] p-2 flex flex-col items-center justify-center text-center">
+                    <img class="mb-3" :src="prize.prize_image" alt="">
                     <div class="mb-3">
                         <div>
-                            Prize 1 : Giftset
+                            {{ prize.prize_name }}
                         </div>
                         <div class="text-green-600">
-                            Required: 200$ Deposit 10 Lots
-                        </div>
-                    </div>
-                    <PrimaryButton>Claim Prize</PrimaryButton>
-                </div>
-                <div class="bg-white w-full md:w-1/4 rounded-[16px] p-2 flex flex-col items-center justify-center text-center p-5">
-                    <img class="mb-3" src="https://tradingtriumph.fbs-campaigns-th.com/dashboard/images/Prize/prize-2.png" alt="">
-                    <div class="mb-3">
-                        <div>
-                            Prize 2 : Gift Voucher
-                        </div>
-                        <div class="text-green-600">
-                            Required: 500$ Deposit 30 Lots
-                        </div>
-                    </div>
-                    <PrimaryButton>Claim Prize</PrimaryButton>
-                </div>
-                <div class="bg-white w-full md:w-1/4 rounded-[16px] p-2 flex flex-col items-center justify-center text-center p-5">
-                    <img class="mb-3" src="https://tradingtriumph.fbs-campaigns-th.com/dashboard/images/Prize/prize-3.png" alt="">
-                    <div class="mb-3">
-                        <div>
-                            Prize 3 : Samsung Phone
-                        </div>
-                        <div class="text-green-600">
-                            Required: 1000$ Deposit 50 Lots
-                        </div>
-                    </div>
-                    <PrimaryButton>Claim Prize</PrimaryButton>
-                </div>
-                <div class="bg-white w-full md:w-1/4 rounded-[16px] p-2 flex flex-col items-center justify-center text-center p-5">
-                    <img class="mb-3" src="https://tradingtriumph.fbs-campaigns-th.com/dashboard/images/Prize/prize-4.png" alt="">
-                    <div class="mb-3">
-                        <div>
-                            Prize 4 : Apple Watch
-
-                        </div>
-                        <div class="text-green-600">
-                            Required: 3000$ Deposit 150 Lots
+                            Required: {{ prize.deposit_required }} Deposit {{ prize.lots_required }} Lots
                         </div>
                     </div>
                     <PrimaryButton>Claim Prize</PrimaryButton>
                 </div>
             </div>
         </template>
-
         <template #order-list-table>
             <div class="bg-white rounded-lg">
                 <div class="text-2xl p-4">
@@ -183,7 +144,7 @@ defineProps({
                 <Table></Table>
                 <div class="h-[1px] w-full my-5 bg-neutral-100"></div>
                 <div class="flex items-center justify-center p-5 pb-10">
-                    <Pagination></Pagination>
+                    <!-- <Pagination></Pagination> -->
                 </div>
             </div>
         </template>
