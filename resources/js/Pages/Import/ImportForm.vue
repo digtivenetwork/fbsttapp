@@ -11,7 +11,7 @@ const form = useForm({
 });
 
 function submit(){
-    if (form.processing) {
+    if (form.processing) { 
         return false
     }
     form.post(route('import.upload'))

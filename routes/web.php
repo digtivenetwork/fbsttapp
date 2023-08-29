@@ -30,6 +30,7 @@ use function PHPSTORM_META\map;
 // });
 
 Route::get('/home',[HomeController::class,'index'])->middleware(['auth','verified'])->name('index');
+Route::get('/',[HomeController::class,'index'])->middleware(['auth','verified'])->name('index');
 
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
@@ -54,6 +55,8 @@ Route::middleware(['auth','role:1'])->group(function () {
     Route::get('/import',[ImportController::class, 'index'])->name('import.index');
     Route::get('/import/uploadform',[ImportController::class, 'uploadform'])->name('import.uploadform');
     Route::post('/import/upload',[ImportController::class, 'upload'])->name('import.upload');
+    
+    
 });
 
 require __DIR__.'/auth.php';
