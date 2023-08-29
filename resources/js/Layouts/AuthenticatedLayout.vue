@@ -37,12 +37,6 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('import.index')" :active="route().current('import.index')">
                                     Import Data
                                 </NavLink>
-                                <NavLink :href="route('import.index')" :active="route().current('import.index')">
-                                    Customer List
-                                </NavLink>
-                                <NavLink :href="route('import.index')" :active="route().current('import.index')">
-                                    Prize List
-                                </NavLink>
                             </div>
                         </div>
 

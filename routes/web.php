@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClaimPrizeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\PrizeClaimedController;
@@ -29,17 +30,15 @@ use function PHPSTORM_META\map;
 //     ]);
 // });
 
-Route::get('/home',[HomeController::class,'index'])->middleware(['auth','verified'])->name('index');
-Route::get('/',[HomeController::class,'index'])->middleware(['auth','verified'])->name('index');
+Route::get('/home',[HomeController::class,'index'])->middleware(['auth'])->name('index');
+Route::get('/',[HomeController::class,'index'])->middleware(['auth'])->name('index');
 
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
     
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/claimprize', function () {
-    return Inertia::render('ClaimPrize');
-});
+Route::get('/claimprize',[ClaimPrizeController::class,'index'])->name('claimprize');
 
 Route::middleware(['auth','role:1'])->group(function () {
 

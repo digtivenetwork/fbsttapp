@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\Customer;
 use App\Models\User;
+use App\Models\UserTrading;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
@@ -51,9 +52,9 @@ class CustomerImport implements ToModel, WithStartRow, WithUpserts
     {
         if ($this->shouldImportRow($row)) {
             $iduser = $this->user->where('email', $row[0])->first();
-            $customercheck = new Customer();
-            Debugbar::info($customercheck);
-            return new Customer([
+            
+            
+            new Customer([
                 'iduser'=> $iduser->id,
                 'full_name' => $row[1], 
                 'address'=> $row[2], 
@@ -64,6 +65,25 @@ class CustomerImport implements ToModel, WithStartRow, WithUpserts
                 'lots'=> $row[7], 
                 'update_by' => auth()->user()->getAuthIdentifier()
             ]);
+
+            return new UserTrading([
+                'iduser'=>$iduser->id, 
+                'mt4_id'=>$row[5], 
+                'deposit'=>$row[6], 
+                'lots'=>$row[7], 
+                'update_by'=>auth()->user()->getAuthIdentifier()
+            ]);
+            // return new Customer([
+            //     'iduser'=> $iduser->id,
+            //     'full_name' => $row[1], 
+            //     'address'=> $row[2], 
+            //     'country'=> $row[3], 
+            //     'phone'=> $row[4], 
+            //     'mt4_id'=> $row[5], 
+            //     'deposit'=> $row[6], 
+            //     'lots'=> $row[7], 
+            //     'update_by' => auth()->user()->getAuthIdentifier()
+            // ]);
         }
     }
 

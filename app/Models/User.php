@@ -48,4 +48,9 @@ class User extends Authenticatable
     //     return $this->hasMany(Import::class, 'imported_by');
     // }
 
+    public function users_profiles()
+    {
+        return $this->hasOne(UserProfile::class, 'iduser','id');
+    }
+
 }
